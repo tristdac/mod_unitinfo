@@ -1,0 +1,250 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template mod_unitinfo/content
+
+    The content.
+
+    Example context (json):
+    {
+        "title": "Awesome Structured Title",
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae perspiciatis sint quas enim! Ratione velit, dolores doloremque! Ipsa animi accusantium error laudantium incidunt veniam totam itaque vitae. Blanditiis, libero voluptatem.</p>",
+        "hasresources": false,
+        "resources": [
+            {
+                "url": "https://google.com",
+                "text": "Google",
+                "icon": "fa-link"
+            },
+            {
+                "url": "https://moodle.com",
+                "text": "Moodle"
+            }
+        ],
+        "imageurl": "https://placekitten.com/200/300"
+    }
+}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<div class="mod_unitinfo-wrapper">
+    <div class="mod_unitinfo-contentwrapper">
+    
+        <div class="container">
+            <div class="unitinfo_container iconlinks">
+                {{#isunit}}
+                {{#canedit}}
+                {{#multipleframeworks}}     
+                <div class="card dashboard-card row col-md-12 multiple-fw" style="margin: 10px 0px;" role="listitem">
+                    <div class="card-body pr-1 course-info-container col-md-12">
+                        <div class="d-flex align-items-start">
+                            <div class="text-dark">
+                                <span class="sr-only">
+                                    Course Homepages (Teacher View)
+                                </span>
+                                <h5 class="multiline h5">
+                                    Course Homepages (Teacher View)
+                                </h5>
+                                <span id="multiinfo"><i class="bi bi-ui-checks-grid"></i> Parent Unit</span>
+                                <span>{{#framework_teach}}<a class="card dashboard-card row col-md-2" role="listitem" href="{{{wwwroot}}}/course/view.php?id={{id}}">{{fullname}}</a>{{/framework_teach}}</span>
+                            </div>   
+                        </div> 
+                    </div>  
+                </div>
+                {{/multipleframeworks}}
+                {{/canedit}}
+                {{/isunit}}
+                <div class="card-deck dashboard-card-deck ">
+                    {{#isunit}}
+                    {{#canedit}}
+                    {{^multipleframeworks}}
+                    <a class="card dashboard-card row" href="/course/view.php?id={{{framework_cid}}}" role="listitem">
+                        <div class="card-img dashboard-list-img col-md-2 features-icons-icon">
+                            <i class="bi-people m-auto text-dark"></i>
+                        </div>
+                        <div class="card-body pr-1 course-info-container col-md-9">
+                            <div class="d-flex align-items-start">
+                                <div class="text-dark">
+                                    <span class="sr-only">
+                                        Course Homepage
+                                    </span>
+                                    <span class="multiline h5">
+                                        Course Homepage
+                                    </span>
+                                    <span>{{{framework}}}</span>
+                                </div>   
+                            </div> 
+                        </div>
+                   {{/multipleframeworks}}
+                   {{/canedit}} 
+                    {{^canedit}}
+                    <a class="card dashboard-card row" href="/course/view.php?id={{{framework_cid}}}" role="listitem">
+                        <div class="card-img dashboard-list-img col-md-2 features-icons-icon">
+                            <i class="bi-people m-auto text-dark"></i>
+                        </div>
+                        <div class="card-body pr-1 course-info-container col-md-9">
+                            <div class="d-flex align-items-start">
+                                <div class="text-dark">
+                                    <span class="sr-only">
+                                        Course Homepage
+                                    </span>
+                                    <span class="multiline h5">
+                                        Course Homepage
+                                    </span>
+                                    <span>{{{framework}}}</span>
+                                </div>   
+                            </div> 
+                        </div>  
+                    </a>
+                    {{/canedit}}
+                    <a class="card dashboard-card row" href="/local/mytutors/index.php" role="listitem">
+                        <div class="card-img dashboard-list-img col-md-2 features-icons-icon">
+                            <i class="bi-people m-auto text-dark"></i>
+                        </div>
+                        <div class="card-body pr-1 course-info-container col-md-9">
+                            <div class="d-flex align-items-start">
+                                <div class="text-dark">
+                                    <span class="sr-only">
+                                        Unit Contacts
+                                    </span>
+                                    <span class="multiline h5">
+                                        Unit Contacts
+                                    </span>
+                                    <span>{{#str}}cc_tag, mod_unitinfo{{/str}}</span>
+                                </div>   
+                            </div> 
+                        </div>  
+                    </a>
+                    {{/isunit}}
+                    {{^isunit}}
+                    <div class="teachers " id="teachersCollapse-{{{cmid}}}" tabindex="-1" role="dialog" aria-labelledby="teachersCollapseLabel-{{{cmid}}}" data-parent="#teachersCollapse-{{{cmid}}}">
+                        <div class="header">
+                            <h5 class="modal-title" id="teachersCollapseLabel-{{{cmid}}}">
+                                Lecturers:
+                            </h5>
+                        </div>
+                        <div class="body">
+                            {{#teachers}}
+                            {{teachername}}          
+                            <div class="contacticons">
+                                <a href="https://teams.microsoft.com/l/chat/0/0?users={{email}}" target="_blank" title="Contact {{teachername}} on Teams">
+                                    <i class="bi bi-microsoft-teams"></i>
+                                </a>
+                                <a href="{{{wwwroot}}}/message/index.php?id={{id}}" target="_blank" title="Contact {{teachername}} on Moodle">
+                                    <i class="bi bi-chat-dots"></i>
+                                </a>
+                                <a href="mailto:{{email}}" target="_blank" title="Email {{teachername}}">
+                                    <i class="bi bi-envelope-at"></i>
+                                </a>
+                            </div><hr>
+                            {{/teachers}}
+                            {{^teachers}}
+                            <span>
+                                No lecturers assigned to this unit yet. Check back later or contact one of your other lecturers.
+                            </span>
+                            {{/teachers}}
+                        </div>
+                    </div>
+                    {{/isunit}}
+                    
+                    {{#issqaunit}}
+                    <a class="card dashboard-card row" href="{{{sqadescurl}}}{{{unitcode}}}.pdf" target="_blank" role="listitem">
+                        <div class="card-img dashboard-list-img col-md-2 features-icons-icon">
+                            <i class="bi-file-earmark-pdf m-auto text-dark"></i>
+                        </div>
+                        <div class="card-body pr-1 course-info-container col-md-9">
+                            <div class="d-flex align-items-start">
+                                <div class="text-dark">
+                                    <span class="sr-only">
+                                        Unit Descriptor
+                                    </span>
+                                    <span class="multiline h5">
+                                        Unit Descriptor
+                                    </span>
+                                    <span>{{#str}}ud_tag, mod_unitinfo{{/str}}</span>
+                                </div>   
+                            </div> 
+                        </div>  
+                    </a>
+                    {{/issqaunit}}
+
+                    {{#scheduleurl}}
+                    <a class="card dashboard-card row" href="{{{scheduleurl}}}" target="_blank" role="listitem">
+                        <div class="card-img dashboard-list-img col-md-2 features-icons-icon">
+                            <i class="bi-calendar-week m-auto text-dark"></i>
+                        </div>
+                        <div class="card-body pr-1 course-info-container col-md-9">
+                            <div class="d-flex align-items-start">
+                                <div class="text-dark">
+                                    <span class="sr-only">
+                                        Assessment Schedule
+                                    </span>
+                                    <span class="multiline h5">
+                                        Assessment Schedule
+                                    </span>
+                                    <span>{{#str}}as_tag, mod_unitinfo{{/str}}</span>
+                                </div>   
+                            </div> 
+                        </div>  
+                    </a>
+                    {{/scheduleurl}}
+                    {{#unitid}}
+                    <a class="card dashboard-card row" href="{{{wwwroot}}}/course/view.php?id={{{unitid}}}" role="listitem">
+                        <div class="card-img dashboard-list-img col-md-2 features-icons-icon">
+                            <i class="bi-collection-fill m-auto text-dark"></i>
+                        </div>
+                        <div class="card-body pr-1 course-info-container col-md-9">
+                            <div class="d-flex align-items-start">
+                                <div class="text-dark">
+                                    <span class="sr-only">
+                                        Go to unit page
+                                    </span>
+                                    <span class="multiline h5">
+                                        Go to unit page
+                                    </span>
+                                    <span>{{#str}}as_tag, mod_unitinfo{{/str}}</span>
+                                </div>   
+                            </div> 
+                        </div>  
+                    </a>
+                    {{/unitid}}
+                    
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+
+{{#js}}
+    var title = document.querySelector('.page-header-headings h1').textContent;
+    var regex = /\/\d{3,4}/;
+    if (regex.test(title)) {
+        var locationUnit = document.querySelector('#block-region-content');
+        var unitinfos = document.querySelectorAll('.activity.activity-wrapper.unitinfo.modtype_unitinfo');
+        var firstUnitInfo = unitinfos[0];
+        locationUnit.before(firstUnitInfo);
+        {{#canedit}}
+            var editBtn = '<a id="edit_unitinfo" href="/course/mod.php?sr=0&update={{cmid}}"><i class="fa fa-cog fa-2x" style="float:right;"></i></a>';
+            var target = document.querySelector('.modtype_unitinfo .activity-item');
+            target.innerHTML += editBtn;
+        {{/canedit}}
+        var numUnitInfos = unitinfos.length;
+        console.log('Number of Unit Infos: ' + numUnitInfos);
+        if (numUnitInfos > 0) {
+            var style = '<style type="text/css">div[role="menuitem"][data-internal="unitinfo"]{display:none;}</style>';
+            $("head").append(style);
+        }
+    }
+{{/js}}

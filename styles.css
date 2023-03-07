@@ -1,0 +1,379 @@
+/*.modtype_unitinfo .activity-item {
+    background-image: url(https://picsum.photos/seed/picsum/200/300);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: exclusion;
+    background-color: #27ae6187;
+}
+
+.modtype_unitinfo h3.modtitle {
+    color: white;
+}*/
+
+.multiple-fw a.card.dashboard-card.row.col-md-2 {
+    display: inline-flex;
+    padding: 5px!important;
+}
+
+#multiinfo {
+    position: absolute;
+    right: 0px;
+    top: 10px;
+}
+
+ .modtype_unitinfo {
+    list-style: none;
+/*    overflow: hidden;*/
+ }
+
+ .modtype_unitinfo .cover {
+    background: black;
+    color: white;
+    padding: 50px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    left: 40%;
+}
+
+.modtype_unitinfo .coursetitle {
+    width: 60%;
+}
+
+.units:hover + .cover {
+    transform: translateX(101%);
+}
+
+.cover:before {
+    top: 0;
+    transform: skewX(-35deg);
+    transform-origin: 100% 0;
+    background: black;
+    color: white;
+    padding: 50px;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    content: '';
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    -webkit-backface-visibility: hidden;
+}
+
+.mod_unitinfo-wrapper .unitinfo_container a:hover {
+    text-decoration: none;
+}
+
+.mod_unitinfo-wrapper a.card.dashboard-card.row:hover {
+    transform: scale(1.1);
+    transition: scale .2s ease-in-out;
+    z-index: 10000;
+    background-color: var(--primary);
+    transition: background-color 200ms linear;
+}
+
+.mod_unitinfo-wrapper .unithelp {
+    margin-top: -35px;
+    position: absolute;
+    right: 0;
+}
+
+.mod_unitinfo-wrapper .units .dashboard-card-deck .dashboard-card {
+    min-height: 67px!important;
+    overflow: hidden;
+}
+
+
+@media(max-width:767px) {
+    .mod_unitinfo-wrapper .units .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
+        width: 100%;
+    }
+    .mod_unitinfo-wrapper .units .card-img, .card-img-bottom {
+        filter: brightness(50%);
+    }
+
+    .mod_unitinfo-wrapper .units .course-info-container .text-dark {
+        color: white!important;
+    }
+
+    .mod_unitinfo-wrapper .units .card-body.pr-1.course-info-container.col-md-9 {
+        margin-left: 0px!important;
+    }
+}
+
+@media(max-width:575px) {
+    .mod_unitinfo-wrapper .units .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
+
+    }
+    .mod_unitinfo-wrapper .units .card-img, .card-img-bottom {
+        filter: brightness(50%);
+    }
+
+    .mod_unitinfo-wrapper .units .course-info-container .text-dark {
+        color: white!important;
+    }
+}
+
+.unitheading {
+    text-align:center;
+}
+
+.features-icons-item {
+  max-width: 20rem;
+}
+.features-icons-icon {
+  height: 7rem;
+}
+.features-icons-icon i {
+  font-size: 2.5rem;
+}
+
+/*.mod_unitinfo-wrapper .unitinfo_container {
+    margin-top: 20px;
+}*/
+
+.mod_unitinfo-wrapper .container {
+    max-width: revert;
+    padding: 0;
+}
+
+@media (min-width: 992px) {
+    .mod_unitinfo-wrapper .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
+        min-height: 50px;
+        text-align: center;
+        padding: 10px;
+    }
+    .mod_unitinfo-wrapper .units .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
+        width: calc(33.3333333% - 0.5rem);
+    }
+}
+
+@media (min-width: 840px) {
+    .mod_unitinfo-wrapper .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
+        min-height: 50px;
+        text-align: center;
+        padding: 10px;
+    }
+    .mod_unitinfo-wrapper .units .dashboard-card-deck:not(.fixed-width-cards) .dashboard-card {
+        width: calc(33.3333333% - 0.5rem);
+    }
+}
+
+.mod_unitinfo-wrapper .dashboard-list-img {
+    height: -webkit-fill-available;
+    position: absolute;
+}
+
+.mod_unitinfo-wrapper a.card.dashboard-card.row {
+    padding: 0px!important;
+    transition: all .2s ease-in-out;
+    margin: 0px;
+    margin-bottom: .5rem;
+    margin-right: .5rem;
+}
+
+.mod_unitinfo-wrapper .card-body.pr-1.course-info-container.col-md-9 {
+    margin-left: 25%;
+    padding: 10px;
+    text-align: left;
+}
+
+.mod_unitinfo-wrapper .card-body.pr-1.course-info-container.col-md-9 .multiline {
+    text-align: left;
+    display: block;
+}
+
+.mod_unitinfo-wrapper .card-img, .card-img-bottom {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.modtype_unitinfo a#edit_unitinfo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+
+//* Existing *//
+
+.mod_unitinfo-wrapper {
+}
+
+.mod_unitinfo-title {
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+    position: relative;
+}
+
+.mod_unitinfo-title::after {
+    content: '';
+    position: absolute;
+    background-color: #e2e2e2;
+    height: 1px;
+    bottom: 0;
+
+    width: 100%; /* Fallback for width with calc. */
+    left: 0; /* Fallback for the left with calc. */
+
+    width: calc(100% + 10px); /* Should be this, unfortunately Moodle strips off calcs with a +. */
+    left: calc(0% + -5px); /* We add this weird one so that it only applies when the width also does. */
+}
+
+.mod_unitinfo-contentwrapper {
+/*    padding: 1rem 0 0;*/
+}
+
+.mod_unitinfo-content {
+    display: flex;
+}
+
+.mod_unitinfo-paragraph {
+    flex: 1 1 auto;
+    order: -1;
+}
+
+.mod_unitinfo-image {
+    padding-left: 2rem;
+    flex: 0 0 auto;
+}
+
+.mod_unitinfo-resources {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mod_unitinfo-resource {
+    margin: 0 1.5rem .5rem 0;
+}
+
+.mod_unitinfo-resourcesbox h4 {
+    font-size: 1.1em;
+}
+
+.mod_unitinfo-resource a {
+    border-radius: 3px;
+    padding: 3px 9px;
+    text-decoration: none;
+    background-color: #00bd70;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 250px;
+}
+
+.mod_unitinfo-resource a:hover,
+.mod_unitinfo-resource a:visited,
+.mod_unitinfo-resource a:active,
+.mod_unitinfo-resource a:focus {
+    text-decoration: none;
+    color: #fff;
+}
+
+.mod_unitinfo-resource a:hover {
+    opacity: .8;
+}
+
+.mod_unitinfo-resource .fa {
+    margin-right: 5px;
+}
+
+.modtype_unitinfo .teachers .contacticons {
+    margin-left: 20px;
+    display: inline-block;
+    font-size: large;
+}
+
+.modtype_unitinfo .teachers .bi {
+    padding: 5px;
+}
+
+.modtype_unitinfo .teachers {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+@media (max-width: 576px) {
+    .mod_unitinfo-content {
+        flex-wrap: wrap;
+    }
+    .mod_unitinfo-image {
+        padding: 0;
+        margin-bottom: 1rem;
+        order: -1;
+    }
+}
+
+.tooltip1 {
+  position: relative;    
+  background: #d10045;
+  padding: 5px 12px;
+  margin: 5px;
+  font-size: 15px;
+  border-radius: 100%;
+  color: #FFF;
+}
+
+.tooltip1:before,
+.tooltip1:after {
+  position: absolute;
+  content: '';
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.tooltip1:before {
+  border-width: 10px 8px 0 8px;
+  border-style: solid;
+  border-color: #d10045 transparent transparent transparent;
+  top: -15px;
+  right: 8px;
+  transform: translateY(20px);
+}
+
+.tooltip1:after {
+  content: attr(data-tooltip);
+  background: #d10045;
+  width: 300px;
+    height: auto;
+    font-size: 13px;
+    font-weight: 300;
+    top: -97px;
+  right: 0px;
+  padding: 10px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  transform: translateY(20px);
+}
+
+.tooltip1:hover::before,
+.tooltip1:hover::after {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+@keyframes shake {
+  0% { 
+    transform: rotate(2deg);
+  }
+  50% {
+   transform: rotate(-3deg);
+  }
+  70% {
+    transform: rotate(3deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+#anim:hover {
+  animation: shake 500ms ease-in-out forwards;
+}
